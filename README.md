@@ -1,34 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 掲示板アプリ
 
-## Getting Started
+## [design](https://www.figma.com/file/qBb7jjS8Lb4cjDOzUXw8dF/%E3%80%90UI%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3_Web%E3%82%A2%E3%83%97%E3%83%AA%E3%80%91%E6%8E%B2%E7%A4%BA%E6%9D%BFapp?type=design&node-id=9%3A4&t=U6tvdedJfSe6hXli-1)
 
-First, run the development server:
+## 構成
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- next.js
+- typescript
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## add module
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- prettier
+- emotion → css modulesにするかも
+- mui
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 設定
 
-## Learn More
+- .env.localにbackAndApiURLを追記
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 不明点
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- route.tsxと [slug] page.tsx の使い分け
+- fetchの型の上書き
+- global-error意味が分からん
