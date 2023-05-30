@@ -1,0 +1,28 @@
+:root{
+    /* color */
+    /* bg */
+    --bg-color: #FFFFFE;
+    --bg-60-color: #DBDbb9;
+    --bg-70-color: #B7B780;
+    --bg-80-color: #939351;
+    --bg-90-color: #7A7A30;
+    /* font */
+    --font-color: #333333;
+    --font-50-color: #094067;
+    --disabled-font-color: #B9CAD7;
+    --disabled-font-40-color: #91A1AF;
+    /* icon */
+    --icon-color: #808080;
+
+    /* size */
+    --font-size--title: 16px;
+    --font-size--subtitle: 14px;
+    --font-size--body: 12px;
+
+    /* box-shodow */
+    --box-shadow: 0px 1px 5px #808080;
+
+    /* margin-bottom */
+    --margin-bottom--article: 20px;
+}
+

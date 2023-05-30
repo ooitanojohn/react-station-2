@@ -9,17 +9,14 @@
 
 ## add module
 
-- prettier
-- emotion → css modulesにするかも
-- mui
+- destyle.css
+- svgr/webpack
 
 ### 設定
 
 - .env.localにbackAndApiURLを追記
 
-
 ### 不明点
 
-- route.tsxと [slug] page.tsx の使い分け
-- fetchの型の上書き
 - global-error意味が分からん
+- appDir配下外に置いたcss.moduleのimport時型指定でerr出てる

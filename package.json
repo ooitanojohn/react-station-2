@@ -9,19 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.0",
-    "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.11.16",
-    "@mui/material": "^5.13.2",
     "@types/node": "20.2.5",
     "@types/react": "18.2.7",
     "@types/react-dom": "18.2.4",
+    "destyle.css": "^4.0.0",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
     "next": "13.4.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sass": "^1.62.1",
+    "server-only": "^0.0.1",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^8.0.1"
   }
 }

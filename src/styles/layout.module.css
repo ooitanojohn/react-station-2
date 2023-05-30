@@ -1,0 +1,17 @@
+.header{
+    background-color: var(--bg-color);
+    color: var(--font-50-color);
+    font-size: var(--font-size--title);
+    padding: 20px 30px;
+    font-weight: bold;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.image{
+    background-color: var(--bg-60-color);
+    border-radius: 5px;
+    fill: var(--font-50-color);
+}
