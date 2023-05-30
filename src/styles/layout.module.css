@@ -10,8 +10,9 @@
     align-items: center;
     gap: 10px;
 }
-.image{
+.icon{
     background-color: var(--bg-60-color);
     border-radius: 5px;
-    fill: var(--font-50-color);
+    fill: var(--font-sub-color);
+    padding: 5px;
 }
