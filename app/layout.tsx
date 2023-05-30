@@ -1,7 +1,7 @@
 import "destyle.css";
 import "@/src/styles/global.css";
 import styles from "@/src/styles/layout.module.css";
-import Image from "next/image";
+import Icon from "@/public/svg/icon.tsx"
 
 export const metadata = {
   title: "掲示板app",
@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="ja">
       <body>
         <header className={styles.header}>
-          <Image src="/svg/icon.svg" width={36} height={36} alt={"logo"} loading="lazy" className={styles.image}/>
+          <Icon />
           <h1>掲示板app</h1>
         </header>
           {children}

@@ -20,8 +20,5 @@
     "react-dom": "18.2.0",
     "server-only": "^0.0.1",
     "typescript": "5.0.4"
-  },
-  "devDependencies": {
-    "@svgr/webpack": "^8.0.1"
   }
 }
