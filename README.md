@@ -19,4 +19,3 @@
 ### 不明点
 
 - global-error意味が分からん
-- appDir配下外に置いたcss.moduleのimport時型指定でerr出てる

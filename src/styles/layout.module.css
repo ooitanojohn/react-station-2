@@ -16,3 +16,9 @@
     fill: var(--font-sub-color);
     padding: 5px;
 }
+.footer{
+    text-align: center;
+    font-size: var(--font-size--small);
+    color: var(--font-80-color);
+    padding: 30px 0px;
+}

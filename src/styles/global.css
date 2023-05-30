@@ -1,6 +1,6 @@
 :root{
     /* color */
-    /* bg */
+    /* font */
     --bg-color: #FFFFFE;
     --bg-60-color: #DBDbb9;
     --bg-70-color: #B7B780;
@@ -10,20 +10,22 @@
     --font-color: #333333;
     --font-sub-color: #FFFFFE;
     --font-50-color: #094067;
+    --font-60-color: #DBDbb9;
+    --font-70-color: #B7B780;
+    --font-80-color: #939351;
+    --font-90-color: #7A7A30;
     --disabled-font-color: #B9CAD7;
     --disabled-font-40-color: #91A1AF;
     /* icon */
     --icon-color: #808080;
 
     /* size */
-    --font-size--title: 16px;
-    --font-size--subtitle: 14px;
-    --font-size--body: 12px;
+    --font-size--title: 18px;
+    --font-size--subtitle: 16px;
+    --font-size--body: 14px;
+    --font-size--small: 12px;
 
     /* box-shodow */
-    --box-shadow: 0px 1px 5px #808080;
-
-    /* margin-bottom */
-    --margin-bottom--article: 20px;
+    --box-shadow: 0px 1px 5px #DBDbb9;
 }
 

@@ -1,11 +1,12 @@
-import Threads from "./threads";
+import ThreadTitles from "./ThreadTitles";
+import Thread from "./Threads";
 
 export default function Page() {
   return (
     <main>
       <article>
-        <h2>最近作成されたスレッド</h2>
-        <Threads />
+        <ThreadTitles />
+        <Thread />
       </article>
     </main>
   );

@@ -1,7 +1,7 @@
 import "destyle.css";
 import "@/src/styles/global.css";
 import styles from "@/src/styles/layout.module.css";
-import Icon from "@/components/Icon";
+import {Icon} from "@/components/Icon";
 
 export const metadata = {
   title: "掲示板app",
@@ -21,7 +21,7 @@ export default function RootLayout({
           <h1>掲示板app</h1>
         </header>
           {children}
-        <footer>
+        <footer className={styles.footer}>
           <address>&copy;2023 react-station2</address>
         </footer>
       </body>
