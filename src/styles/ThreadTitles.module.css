@@ -2,11 +2,12 @@
     display: flex;
     gap: 1rem;
     align-items: center;
+    width: 90%;
+    margin: 0 auto 30px;
 }
 .h2{
     font-size: var(--font-size-title);
     font-weight: bold;
-    margin: 2.5rem 0rem 2.5rem 2.5rem;
     color: var(--font-70-color);
 }
 
@@ -79,7 +80,11 @@
 .threadTitle{
     margin-right: 10px;
     font-size: var(--font-size--body);
-    font-weight: bold;
+    font-weight: 700;
+    font-family: var(--font-montserrat);
+}
+.threadTitle > span{
+    font-family: var(--font-noto-sans-jp);
 }
 .threadTitleText{
     font-weight: normal;

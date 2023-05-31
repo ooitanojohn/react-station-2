@@ -1,31 +1,35 @@
-:root{
-    /* color */
-    /* font */
-    --bg-color: #FFFFFE;
-    --bg-60-color: #DBDbb9;
-    --bg-70-color: #B7B780;
-    --bg-80-color: #939351;
-    --bg-90-color: #7A7A30;
-    /* font */
-    --font-color: #333333;
-    --font-sub-color: #FFFFFE;
-    --font-50-color: #094067;
-    --font-60-color: #DBDbb9;
-    --font-70-color: #B7B780;
-    --font-80-color: #939351;
-    --font-90-color: #7A7A30;
-    --disabled-font-color: #B9CAD7;
-    --disabled-font-40-color: #91A1AF;
-    /* icon */
-    --icon-color: #808080;
-
-    /* size */
-    --font-size--title: 18px;
-    --font-size--subtitle: 16px;
-    --font-size--body: 14px;
-    --font-size--small: 12px;
-
-    /* box-shodow */
-    --box-shadow: 0px 1px 5px #DBDbb9;
+:root {
+  /* color */
+  /* bg */
+  --bg-color: #fffffe;
+  --bg-60-color: #dbdbb9;
+  --bg-70-color: #b7b780;
+  --bg-80-color: #939351;
+  --bg-90-color: #7a7a30;
+  /* font */
+  --font-color: #333333;
+  --font-sub-color: #fffffe;
+  --font-50-color: #094067;
+  --font-60-color: #dbdbb9;
+  --font-70-color: #b7b780;
+  --font-80-color: #939351;
+  --font-90-color: #7a7a30;
+  --disabled-font-color: #b9cad7;
+  --disabled-font-40-color: #91a1af;
+  /* fontsize */
+  --font-size--title: 18px;
+  --font-size--subtitle: 16px;
+  --font-size--body: 14px;
+  --font-size--small: 12px;
+  /* fontfamily */
+  /* --font-noto-sans-jp: "Noto Sans JP", sans-serif; */
+  /* --font-montserrat: "Montserrat", sans-serif; */
+  /* icon */
+  --icon-color: #808080;
+  /* box-shodow */
+  --box-shadow: 0px 1px 5px #dbdbb9;
 }
 
+html {
+  font-family: var(--font-noto-sans-jp);
+}

@@ -92,7 +92,7 @@ export default function ThreadTitles() {
         <h2 className={styles.h2}>最近作成されたスレッド</h2>
         <button type="submit" className={styles.modalBtn}>
           <PostAdd className={styles.icon} />
-          新規投稿
+          new
         </button>
         {/* <form onSubmit={createThread}>
           <input type="text" name="title" />
