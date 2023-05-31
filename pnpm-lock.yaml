@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@material-design-icons/font':
+    specifier: ^0.14.8
+    version: 0.14.8
   '@types/node':
     specifier: 20.2.5
     version: 20.2.5
@@ -103,6 +106,10 @@ packages:
 
   /@humanwhocodes/object-schema@1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    dev: false
+
+  /@material-design-icons/font@0.14.8:
+    resolution: {integrity: sha512-KQ/zk35qFYF+TLv83z0mt021G+CQhgUds+KZ0f65SR5wTu4UzHsXOrsWRhDwrncSP+BqVnk5xab9brwxUoK0rA==}
     dev: false
 
   /@next/env@13.4.4:

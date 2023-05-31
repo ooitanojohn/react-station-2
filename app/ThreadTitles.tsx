@@ -4,12 +4,16 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import Loading from "@/components/Loading";
 import FetchError from "@/components/FetchError";
 import styles from "@/src/styles/ThreadTitles.module.css";
-import { PostAdd, MoreVert, AddCircle } from "@/components/Icon";
+import { PostAdd, MoreVert, Bookmark, BookmarkFill } from "@/components/Icon";
 
 interface Thread {
   id: string;
   title: string;
 }
+interface HoverBookmarkProps {
+  data: any[];
+}
+
 
 /**
  * 初期表示時に取得するスレッド
@@ -42,6 +46,8 @@ async function getThreadInit(): Promise<Thread[]> {
 }
 
 export default function ThreadTitles() {
+  const [hoveredIndexes, setHoveredIndexes] = useState([]);
+
   const [threads, setThreads] = useState<Thread[]>([]);
   useEffect(() => {
     async function fetch() {
@@ -55,6 +61,13 @@ export default function ThreadTitles() {
     fetch();
   }, []);
 
+  // マウスオーバー時の処理
+  const handleMouseEnter = (threadId: string) => {
+    setHoveredIndexes((prevIndexes) => [...prevIndexes, threadId]);
+  };
+  const handleMouseLeave = (threadId: string) => {
+    setHoveredIndexes((prevIndexes) => prevIndexes.filter((i) => i !== threadId));
+  };
   const createThread = async (e: any) => {
     e.preventDefault();
     const thread = {
@@ -101,17 +114,24 @@ export default function ThreadTitles() {
       <ul className={styles.ul}>
         <ErrorBoundary fallback={<FetchError />}>
           <Suspense fallback={<Loading />}>
-            {threads.map((thread: Thread) => (
+            {threads.map((thread: Thread, index: number) => (
               <li key={thread.id} className={styles.li}>
                 <p className={styles.threadTitle}>
-                  Title : <span className={styles.threadTitleText}>{thread.title}</span>
+                  Title :{" "}
+                  <span className={styles.threadTitleText}>{thread.title}</span>
                 </p>
                 <button
                   onClick={addThreadComponent}
                   datatype={`/threads/${thread.title}`}
                   className={styles.addButton}
+                  onMouseEnter={() => handleMouseEnter(thread.id)}
+                  onMouseLeave={() => handleMouseLeave(thread.id)}
                 >
-                  <AddCircle className={styles.icon} />
+                  {hoveredIndexes.includes(thread.id) ? (
+                    <BookmarkFill className={styles.icon} />
+                  ) : (
+                    <Bookmark className={styles.icon} />
+                  )}
                 </button>
               </li>
             ))}

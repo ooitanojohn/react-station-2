@@ -27,6 +27,9 @@
     background-color: var(--bg-60-color);
     color: var(--font-sub-color);
 }
+.modalBtn > .icon{
+    margin-right: 5px;
+}
 
 .ul{
     width: 90%;
@@ -61,16 +64,10 @@
     color: var(--bg-80-color);
 }
 
-.addButton:hover .icon{
-    fill: var(--font-sub-color);
-    background-color: var(--bg-60-color);
-    border-radius: 50%;
-}
 .icon{
     width: 24px;
     height: 24px;
     fill: var(--bg-70-color);
-    margin-right: 5px;
 }
 .moreVert{
     width: 100%;

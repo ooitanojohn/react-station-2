@@ -11,13 +11,13 @@ export const metadata = {
 
 const NotoSansJP = Noto_Sans_JP({
   weight: ["400", "700"],
-  variable: '--font-noto-sans-jp',
+  variable: "--font-noto-sans-jp",
   subsets: ["latin"],
   preload: true,
 });
 const montserrat = Montserrat({
   weight: ["400", "700"],
-  variable: '--font-montserrat',
+  variable: "--font-montserrat",
   subsets: ["latin"],
   preload: true,
 });

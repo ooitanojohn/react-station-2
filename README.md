@@ -14,8 +14,11 @@
 
 ### 設定
 
-- .env.localにbackAndApiURLを追記
+- .env.local に backAndApiURL を追記
 
 ### 不明点
 
-- global-error意味が分からん
+- global-error 意味が分からん
+- [google icon](https://github.com/google/material-design-icons) 4 種類くらいある
+  - [icon/font 一番軽いのダメ](https://github.com/marella/material-design-icons/tree/main/font#readme)
+  -
