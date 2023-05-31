@@ -4,16 +4,13 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import Loading from "@/components/Loading";
 import FetchError from "@/components/FetchError";
 import styles from "@/src/styles/ThreadTitles.module.css";
-import { PostAdd, MoreVert, Bookmark, BookmarkFill } from "@/components/Icon";
+import { PostAdd, MoreVert} from "@/components/Icon";
+import BookmarkState from "./BookmarkState";
 
 interface Thread {
   id: string;
   title: string;
 }
-interface HoverBookmarkProps {
-  data: any[];
-}
-
 
 /**
  * 初期表示時に取得するスレッド
@@ -46,7 +43,6 @@ async function getThreadInit(): Promise<Thread[]> {
 }
 
 export default function ThreadTitles() {
-  const [hoveredIndexes, setHoveredIndexes] = useState([]);
 
   const [threads, setThreads] = useState<Thread[]>([]);
   useEffect(() => {
@@ -61,13 +57,6 @@ export default function ThreadTitles() {
     fetch();
   }, []);
 
-  // マウスオーバー時の処理
-  const handleMouseEnter = (threadId: string) => {
-    setHoveredIndexes((prevIndexes) => [...prevIndexes, threadId]);
-  };
-  const handleMouseLeave = (threadId: string) => {
-    setHoveredIndexes((prevIndexes) => prevIndexes.filter((i) => i !== threadId));
-  };
   const createThread = async (e: any) => {
     e.preventDefault();
     const thread = {
@@ -91,14 +80,6 @@ export default function ThreadTitles() {
     console.log(data);
     setThreads([...threads, data]);
   };
-  const addThreadComponent = (e: any) => {
-    e.preventDefault();
-    const datatype = e.target.getAttribute("datatype");
-    console.log(datatype);
-    const postComponent = document.createElement("post-component");
-    postComponent.textContent = datatype;
-    document.body.appendChild(postComponent);
-  };
   return (
     <>
       <div className={styles.articleTitle}>
@@ -120,19 +101,7 @@ export default function ThreadTitles() {
                   Title :{" "}
                   <span className={styles.threadTitleText}>{thread.title}</span>
                 </p>
-                <button
-                  onClick={addThreadComponent}
-                  datatype={`/threads/${thread.title}`}
-                  className={styles.addButton}
-                  onMouseEnter={() => handleMouseEnter(thread.id)}
-                  onMouseLeave={() => handleMouseLeave(thread.id)}
-                >
-                  {hoveredIndexes.includes(thread.id) ? (
-                    <BookmarkFill className={styles.icon} />
-                  ) : (
-                    <Bookmark className={styles.icon} />
-                  )}
-                </button>
+                <BookmarkState props={thread} />
               </li>
             ))}
           </Suspense>
