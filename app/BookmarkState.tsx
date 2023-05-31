@@ -1,5 +1,5 @@
 "use client";
-import React,{ useState } from "react";
+import React,{ useState, useRef } from "react";
 import { Bookmark, BookmarkFill } from "@/components/Icon";
 import styles from "@/src/styles/BookmarkState.module.css";
 
@@ -13,12 +13,16 @@ interface Thread {
 
 const BookmarkState: React.FC<BookmarkProps> = ({props}:BookmarkProps) => {
   const [hoveredIndexes, setHoveredIndexes] = useState<string[]>([]);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // マウスオーバー時の処理
   const handleMouseEnter = (threadId: string) => {
+    timeoutRef.current = setTimeout(() => {
     setHoveredIndexes((prevIndexes) => [...prevIndexes, threadId]);
+  }, 100);
   };
   const handleMouseLeave = (threadId: string) => {
+    clearTimeout(timeoutRef.current!);
     setHoveredIndexes((prevIndexes) =>
       prevIndexes.filter((i) => i !== threadId)
     );
