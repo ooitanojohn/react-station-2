@@ -1,10 +1,9 @@
 "use client";
 import { Suspense, useEffect, useState } from "react";
 import ErrorBoundary from "@/components/ErrorBoundary";
-import Loading from "@/components/Loading";
 import FetchError from "@/components/FetchError";
 import styles from "@/src/styles/ThreadTitles.module.css";
-import { PostAdd, MoreVert} from "@/components/Icon";
+import { PostAdd, MoreVert } from "@/components/Icon";
 import BookmarkState from "./BookmarkState";
 
 interface Thread {
@@ -43,8 +42,12 @@ async function getThreadInit(): Promise<Thread[]> {
 }
 
 export default function ThreadTitles() {
-
   const [threads, setThreads] = useState<Thread[]>([]);
+  const [bookmarks, setBookmarks] = useState<Thread[]>([]);
+  const reactiveBookmark = (thread: Thread): void => {
+    setBookmarks([...bookmarks, thread]);
+  };
+  console.log(bookmarks);
   useEffect(() => {
     async function fetch() {
       try {
@@ -82,32 +85,39 @@ export default function ThreadTitles() {
   };
   return (
     <>
-      <div className={styles.articleTitle}>
-        <h2 className={styles.h2}>最近作成されたスレッド</h2>
-        <button type="submit" className={styles.modalBtn}>
-          <PostAdd className={styles.icon} />
-          new
-        </button>
+      <article className={styles.articleTitle}>
+        <div className={styles.titleContainer}>
+          <h2 className={styles.h2}>最近作成されたスレッド</h2>
+          <button type="submit" className={styles.modalBtn}>
+            <PostAdd className={styles.icon} />
+            new
+          </button>
+        </div>
         {/* <form onSubmit={createThread}>
           <input type="text" name="title" />
         </form> */}
-      </div>
-      <ul className={styles.ul}>
-        <ErrorBoundary fallback={<FetchError />}>
-          <Suspense fallback={<Loading />}>
-            {threads.map((thread: Thread, index: number) => (
-              <li key={thread.id} className={styles.li}>
-                <p className={styles.threadTitle}>
-                  Title :{" "}
-                  <span className={styles.threadTitleText}>{thread.title}</span>
-                </p>
-                <BookmarkState props={thread} />
-              </li>
-            ))}
-          </Suspense>
-        </ErrorBoundary>
-        <MoreVert className={styles.moreVert} />
-      </ul>
+        <ul className={styles.ul}>
+          <ErrorBoundary fallback={<FetchError />}>
+            <Suspense fallback={<p>title取得中...</p>}>
+              {threads.map((thread: Thread, index: number) => (
+                <li key={index} className={styles.li}>
+                  <p className={styles.threadTitle}>
+                    Title :{" "}
+                    <span className={styles.threadTitleText}>
+                      {thread.title}
+                    </span>
+                  </p>
+                  <BookmarkState
+                    thread={thread}
+                    reactiveBookmark={reactiveBookmark}
+                  />
+                </li>
+              ))}
+            </Suspense>
+          </ErrorBoundary>
+          <MoreVert className={styles.moreVert} />
+        </ul>
+      </article>
     </>
   );
 }
