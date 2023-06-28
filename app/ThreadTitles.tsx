@@ -5,12 +5,11 @@ import FetchError from "@/components/FetchError";
 import styles from "@/src/styles/ThreadTitles.module.css";
 import { PostAdd, MoreVert } from "@/components/Icon";
 import BookmarkState from "./BookmarkState";
+import { Thread } from "@/src/interfaces";
 
-interface Thread {
-  id: string;
-  title: string;
+interface Props {
+  reactiveBookmark: (thread: Thread) => void;
 }
-
 /**
  * 初期表示時に取得するスレッド
  * @returns
@@ -41,13 +40,9 @@ async function getThreadInit(): Promise<Thread[]> {
   }
 }
 
-export default function ThreadTitles() {
+export default function ThreadTitles(props: Props) {
   const [threads, setThreads] = useState<Thread[]>([]);
-  const [bookmarks, setBookmarks] = useState<Thread[]>([]);
-  const reactiveBookmark = (thread: Thread): void => {
-    setBookmarks([...bookmarks, thread]);
-  };
-  console.log(bookmarks);
+
   useEffect(() => {
     async function fetch() {
       try {
@@ -109,7 +104,7 @@ export default function ThreadTitles() {
                   </p>
                   <BookmarkState
                     thread={thread}
-                    reactiveBookmark={reactiveBookmark}
+                    reactiveBookmark={props.reactiveBookmark}
                   />
                 </li>
               ))}
