@@ -43,7 +43,7 @@ const PostAdd = (props: SVGElement) => (
   </svg>
 );
 
-const Bookmark = (props:SVGElement) => (
+const Bookmark = (props: SVGElement) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={48}
@@ -53,10 +53,9 @@ const Bookmark = (props:SVGElement) => (
   >
     <path d="m480-240-196 84q-30 13-57-4.756-27-17.755-27-50.244v-574q0-24 18-42t42-18h440q24 0 42 18t18 42v574q0 32.489-27 50.244Q706-143 676-156l-196-84Zm0-64 220 93v-574H260v574l220-93Zm0-481H260h440-220Z" />
   </svg>
-)
+);
 
-
-const BookmarkFill = (props:SVGElement) => (
+const BookmarkFill = (props: SVGElement) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={48}
@@ -66,9 +65,9 @@ const BookmarkFill = (props:SVGElement) => (
   >
     <path d="m480-240-196 84q-30 13-57-5t-27-50v-574q0-24 18-42t42-18h440q24 0 42 18t18 42v574q0 32-27 50t-57 5l-196-84Z" />
   </svg>
-)
+);
 
-const SendFill = (props:SVGElement) => (
+const SendFill = (props: SVGElement) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={48}
@@ -78,9 +77,9 @@ const SendFill = (props:SVGElement) => (
   >
     <path d="M162-178q-15 6-28.5-2.5T120-205v-200l302-75-302-77v-198q0-16 13.5-24.5T162-782l652 274q18 8 18 28t-18 28L162-178Z" />
   </svg>
-)
+);
 
-const Delete = (props:SVGElement) => (
+const Delete = (props: SVGElement) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={48}
@@ -90,9 +89,9 @@ const Delete = (props:SVGElement) => (
   >
     <path d="M261-120q-24 0-42-18t-18-42v-570h-11q-12.75 0-21.375-8.675-8.625-8.676-8.625-21.5 0-12.825 8.625-21.325T190-810h158q0-13 8.625-21.5T378-840h204q12.75 0 21.375 8.625T612-810h158q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T770-750h-11v570q0 24-18 42t-42 18H261Zm0-630v570h438v-570H261Zm106 454q0 12.75 8.675 21.375 8.676 8.625 21.5 8.625 12.825 0 21.325-8.625T427-296v-339q0-12.75-8.675-21.375-8.676-8.625-21.5-8.625-12.825 0-21.325 8.625T367-635v339Zm166 0q0 12.75 8.675 21.375 8.676 8.625 21.5 8.625 12.825 0 21.325-8.625T593-296v-339q0-12.75-8.675-21.375-8.676-8.625-21.5-8.625-12.825 0-21.325 8.625T533-635v339ZM261-750v570-570Z" />
   </svg>
-)
+);
 
-const DeleteFill = (props:SVGElement) => (
+const DeleteFill = (props: SVGElement) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={48}
@@ -102,9 +101,9 @@ const DeleteFill = (props:SVGElement) => (
   >
     <path d="M261-120q-24 0-42-18t-18-42v-570h-11q-12.75 0-21.375-8.675-8.625-8.676-8.625-21.5 0-12.825 8.625-21.325T190-810h158q0-13 8.625-21.5T378-840h204q12.75 0 21.375 8.625T612-810h158q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T770-750h-11v570q0 24-18 42t-42 18H261Zm106-176q0 12.75 8.675 21.375 8.676 8.625 21.5 8.625 12.825 0 21.325-8.625T427-296v-339q0-12.75-8.675-21.375-8.676-8.625-21.5-8.625-12.825 0-21.325 8.625T367-635v339Zm166 0q0 12.75 8.675 21.375 8.676 8.625 21.5 8.625 12.825 0 21.325-8.625T593-296v-339q0-12.75-8.675-21.375-8.676-8.625-21.5-8.625-12.825 0-21.325 8.625T533-635v339Z" />
   </svg>
-)
+);
 
-const EditNote = (props:SVGElement) => (
+const EditNote = (props: SVGElement) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={48}
@@ -114,6 +113,42 @@ const EditNote = (props:SVGElement) => (
   >
     <path d="m810-379-71-71 29-29q8.311-8 21.156-8Q802-487 810-479l29 29q8 8.311 8 21.156Q847-416 839-408l-29 29ZM480-120v-71l216-216 71 71-216 216h-71ZM120-330v-60h300v60H120Zm0-165v-60h470v60H120Zm0-165v-60h470v60H120Z" />
   </svg>
-)
+);
 
-export { Icon, MoreVert, PostAdd, Bookmark, BookmarkFill, SendFill, Delete, DeleteFill, EditNote};
+const DoneFill = (props: SVGElement) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={48}
+    height={48}
+    viewBox="0 -960 960 960"
+    {...props}
+  >
+    <path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z" />
+  </svg>
+);
+
+const CloseFill = (props: SVGElement) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={48}
+    height={48}
+    viewBox="0 -960 960 960"
+    {...props}
+  >
+    <path d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
+  </svg>
+);
+
+export {
+  Icon,
+  MoreVert,
+  PostAdd,
+  Bookmark,
+  BookmarkFill,
+  SendFill,
+  Delete,
+  DeleteFill,
+  EditNote,
+  DoneFill,
+  CloseFill,
+};

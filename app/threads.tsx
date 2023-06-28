@@ -2,30 +2,32 @@
 
 import styles from "@/src/styles/Threads.module.css";
 import Posts from "./Posts";
-import { EditNote, Delete, DeleteFill } from "@/components/Icon";
+import DeleteConfirmModal from "./@modal/thread/DeleteConfirmModal";
+import { EditNote } from "@/components/Icon";
 import { Thread } from "@/src/interfaces";
 
 interface Props {
   bookmarks: Thread[];
+  deleteBookmark: (thread: Thread) => void;
 }
 
 export default function Threads(props: Props) {
-  console.log("props.bookmarks", props.bookmarks);
   return (
-    <article className={styles.section}>
-      {props.bookmarks.map((threadId, index) => (
-        <section key={index}>
+    <article className={styles.article}>
+      {props.bookmarks.map((thread, index) => (
+        <section key={index} className={styles.section}>
           <div className={styles.titleContainer}>
-            <h3 className={styles.h3}>{threadId.title}の投稿一覧</h3>
-            <button type="submit" className={styles.modalBtn}>
+            <h3 className={styles.h3}>{thread.title}の投稿一覧</h3>
+            <button className={styles.modalBtn}>
               <EditNote className={styles.icon} />
               new
             </button>
-            <button type="submit" className={styles.modalBtn}>
-              <Delete className={styles.icon} />
-            </button>
+            <DeleteConfirmModal
+              thread={thread}
+              deleteBookmark={props.deleteBookmark}
+            />
           </div>
-          <Posts threadId={threadId.id} />
+          <Posts threadId={thread.id} />
         </section>
       ))}
     </article>

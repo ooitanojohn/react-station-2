@@ -33,3 +33,11 @@
 html {
   font-family: var(--font-noto-sans-jp);
 }
+
+body{
+  /* width:100vw; */
+}
+
+main {
+  /* width: 100vw; */
+}

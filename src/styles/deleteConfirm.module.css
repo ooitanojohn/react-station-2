@@ -1,0 +1,21 @@
+.modalBtn {
+  line-height: 23px;
+  font-size: var(--font-size--small);
+  color: var(--font-70-color);
+  border: 2px solid var(--bg-60-color);
+  border-radius: 5px;
+  padding: 2px 5px;
+}
+.modalBtn:hover .icon {
+  fill: var(--font-sub-color);
+}
+.modalBtn:hover {
+  background-color: var(--bg-60-color);
+  color: var(--font-sub-color);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: var(--bg-70-color);
+}

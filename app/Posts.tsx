@@ -1,9 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
+import styles from "@/src/styles/Posts.module.css";
+import { MoreVert } from "@/components/Icon";
 
 interface Post {
-  threadId: string;
-  posts: [{ id: string; post: string }];
+  id: string;
+  post: string;
 }
 
 interface Props {
@@ -21,23 +23,23 @@ export default function Thread(props: Props) {
   }, [props.threadId]);
 
   return (
-    <div>
-      <ul>
-        {posts.length == 0 ? (
-          <li>投稿はまだありません</li>
-        ) : (
-          posts.map((post, index) => {
-            return (
-              <div key={post.posts[index].id}>
-                {post.posts.map((post) => {
-                  return <li key={post.id}>{post.post}</li>;
-                })}
-              </div>
-            );
-          })
-        )}
-      </ul>
-    </div>
+    <ul className={styles.ul}>
+      {posts.length != 0 ? (
+        posts.map((post, index) => {
+          return (
+            <>
+              <li key={index} className={styles.id}>
+                ID: {index + 1}
+              </li>
+              <li className={styles.post}>{post.post}</li>
+            </>
+          );
+        })
+      ) : (
+        <li>投稿はまだありません</li>
+      )}
+      <MoreVert className={styles.moreVert} />
+    </ul>
   );
 }
 
@@ -49,7 +51,7 @@ async function getThreadInit(threadId: string): Promise<Post[]> {
   const offsets = [0, 10, 20];
   const promises = offsets.map((offset) => {
     return fetch(
-      `${process.env.BACKENDURL}/threads/${threadId}/posts?offset=${offset}`,
+      `${process.env.Next_PUBLIC_API_URL}/threads/${threadId}/posts?offset=${offset}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -61,26 +63,16 @@ async function getThreadInit(threadId: string): Promise<Post[]> {
     });
   });
   const res = await Promise.all(promises);
-  if (
-    res[0].posts.length == 0 &&
-    res[1].posts.length == 0 &&
-    res[2].posts.length == 0
-  ) {
+  const mapRes = res.map((res) => res.posts);
+
+  if (mapRes[0].length == 0 && mapRes[1].length == 0 && mapRes[2].length == 0) {
     return []; // 投稿はまだありません
   }
-  if (
-    res[0].posts.length != 0 &&
-    res[1].posts.length == 0 &&
-    res[2].posts.length == 0
-  ) {
-    return [res[0]]; // 10件以下
+  if (mapRes[0].length != 0 && mapRes[1].length == 0 && mapRes[2].length == 0) {
+    return mapRes[0]; // 10件以下
   }
-  if (
-    res[0].posts.length != 0 &&
-    res[1].posts.length != 0 &&
-    res[2].posts.length == 0
-  ) {
-    return res[0].concat(res[1]); // 20件以下
+  if (mapRes[0].length != 0 && mapRes[1].length != 0 && mapRes[2].length == 0) {
+    return mapRes[0].concat(mapRes[1]); // 20件以下
   }
-  return res[0].concat(res[1], res[2]);
+  return mapRes[0].concat(mapRes[1], mapRes[2]);
 }

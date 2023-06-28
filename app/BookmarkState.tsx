@@ -6,42 +6,46 @@ import { Thread } from "@/src/interfaces";
 
 interface Props {
   thread: Thread;
-  reactiveBookmark: (thread: Thread) => void;
+  bookmarks: Thread[];
+  addBookmark: (thread: Thread) => void;
+  deleteBookmark: (thread: Thread) => void;
 }
 
 const BookmarkState = (props: Props) => {
   const [hoveredState, setHoveredState] = useState(false);
-  const [clickState,setClickState] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // マウスオーバー時の処理
-  const handleMouseEnter = (threadId: string) => {
+  const handleMouseEnter = () => {
     timeoutRef.current = setTimeout(() => {
       setHoveredState(true);
     }, 100);
   };
-  const handleMouseLeave = (threadId: string): void => {
+  const handleMouseLeave = (): void => {
     clearTimeout(timeoutRef.current!);
     setHoveredState(false);
   };
-  // ブックマークボタンを押した時の処理,DBに保存する → 未実装
-  const addThreadComponent = (
+  // ブックマークボタンを押した時の処理
+  const toggleBookmark = (
     props: Props,
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ): void => {
     e.preventDefault();
-    setClickState(true);
-    props.reactiveBookmark(props.thread);
+    if (props.bookmarks.includes(props.thread)) {
+      props.deleteBookmark(props.thread);
+      return;
+    }
+    props.addBookmark(props.thread);
   };
 
   return (
     <button
-      onClick={(e) => addThreadComponent(props, e)}
+      onClick={(e) => toggleBookmark(props, e)}
       className={styles.addButton}
-      onMouseEnter={() => handleMouseEnter(props.thread.id)}
-      onMouseLeave={() => handleMouseLeave(props.thread.id)}
+      onMouseEnter={() => handleMouseEnter}
+      onMouseLeave={() => handleMouseLeave}
     >
-      {hoveredState || clickState ? (
+      {hoveredState || props.bookmarks.includes(props.thread) ? (
         <BookmarkFill className={styles.icon} />
       ) : (
         <Bookmark className={styles.icon} />

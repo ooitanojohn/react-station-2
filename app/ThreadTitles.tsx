@@ -8,8 +8,11 @@ import BookmarkState from "./BookmarkState";
 import { Thread } from "@/src/interfaces";
 
 interface Props {
-  reactiveBookmark: (thread: Thread) => void;
+  bookmarks: Thread[];
+  addBookmark: (thread: Thread) => void;
+  deleteBookmark: (thread: Thread) => void;
 }
+
 /**
  * 初期表示時に取得するスレッド
  * @returns
@@ -18,7 +21,7 @@ async function getThreadInit(): Promise<Thread[]> {
   const offsets = [0, 10, 20];
   const promises = offsets.map((offset) => {
     return fetch(
-      `${process.env.BACKENDURL}/threads?offset=${offset}`,
+      `${process.env.Next_PUBLIC_API_URL}/threads?offset=${offset}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -42,7 +45,6 @@ async function getThreadInit(): Promise<Thread[]> {
 
 export default function ThreadTitles(props: Props) {
   const [threads, setThreads] = useState<Thread[]>([]);
-
   useEffect(() => {
     async function fetch() {
       try {
@@ -61,7 +63,7 @@ export default function ThreadTitles(props: Props) {
       title: e.target.title.value,
     };
     const data: Thread = await fetch(
-      `${process.env.BACKENDURL}/threads`,
+      `${process.env.Next_PUBLIC_API_URL}/threads`,
       {
         method: "POST",
         headers: {
@@ -104,7 +106,9 @@ export default function ThreadTitles(props: Props) {
                   </p>
                   <BookmarkState
                     thread={thread}
-                    reactiveBookmark={props.reactiveBookmark}
+                    bookmarks={props.bookmarks}
+                    addBookmark={props.addBookmark}
+                    deleteBookmark={props.deleteBookmark}
                   />
                 </li>
               ))}

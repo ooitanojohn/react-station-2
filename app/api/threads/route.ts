@@ -11,7 +11,7 @@ type Thread = {
 async function getThreadInit(): Promise<NextResponse<Thread[]>> {
     const offsets = [0, 10, 20];
     const promises = offsets.map((offset) => {
-      return fetch(`${process.env.BACKENDURL}/threads?offset=${offset}`, {
+      return fetch(`${process.env.Next_PUBLIC_API_URL}/threads?offset=${offset}`, {
         headers: {
           "Content-Type": "application/json",
         },

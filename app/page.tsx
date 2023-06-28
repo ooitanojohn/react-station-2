@@ -6,13 +6,16 @@ import { Thread } from "@/src/interfaces";
 
 export default function Page() {
   const [bookmarks, setBookmarks] = useState<Thread[]>([]);
-  const reactiveBookmark = (thread: Thread): void => {
+  const addBookmark = (thread: Thread): void => {
     setBookmarks([...bookmarks, thread]);
+  };
+  const deleteBookmark = (thread: Thread): void => {
+    setBookmarks(bookmarks.filter((bookmark) => bookmark.id !== thread.id));
   };
   return (
     <main>
-      <ThreadTitles reactiveBookmark={reactiveBookmark}/>
-      <Threads bookmarks={bookmarks}/>
+      <ThreadTitles bookmarks={bookmarks} addBookmark={addBookmark} deleteBookmark={deleteBookmark}/>
+      <Threads bookmarks={bookmarks} deleteBookmark={deleteBookmark}/>
     </main>
   );
 }
