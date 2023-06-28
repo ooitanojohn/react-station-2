@@ -1,50 +1,47 @@
 "use client";
-import React,{ useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Bookmark, BookmarkFill } from "@/components/Icon";
 import styles from "@/src/styles/BookmarkState.module.css";
+import { Thread } from "@/src/interfaces";
 
-interface BookmarkProps {
-  props: Thread;
-}
-interface Thread {
-  id: string;
-  title: string;
+interface Props {
+  thread: Thread;
+  reactiveBookmark: (thread: Thread) => void;
 }
 
-const BookmarkState: React.FC<BookmarkProps> = ({props}:BookmarkProps) => {
-  const [hoveredIndexes, setHoveredIndexes] = useState<string[]>([]);
+const BookmarkState = (props: Props) => {
+  const [hoveredState, setHoveredState] = useState(false);
+  const [clickState,setClickState] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // マウスオーバー時の処理
   const handleMouseEnter = (threadId: string) => {
     timeoutRef.current = setTimeout(() => {
-    setHoveredIndexes((prevIndexes) => [...prevIndexes, threadId]);
-  }, 100);
+      setHoveredState(true);
+    }, 100);
   };
-  const handleMouseLeave = (threadId: string) => {
+  const handleMouseLeave = (threadId: string): void => {
     clearTimeout(timeoutRef.current!);
-    setHoveredIndexes((prevIndexes) =>
-      prevIndexes.filter((i) => i !== threadId)
-    );
+    setHoveredState(false);
   };
-  const addThreadComponent = (e: any) => {
+  // ブックマークボタンを押した時の処理,DBに保存する → 未実装
+  const addThreadComponent = (
+    props: Props,
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void => {
     e.preventDefault();
-    const datatype = e.target.getAttribute("datatype");
-    console.log(datatype);
-    const postComponent = document.createElement("post-component");
-    postComponent.textContent = datatype;
-    document.body.appendChild(postComponent);
+    setClickState(true);
+    props.reactiveBookmark(props.thread);
   };
 
   return (
     <button
-      onClick={addThreadComponent}
-      datatype={`/threads/${props.title}`}
+      onClick={(e) => addThreadComponent(props, e)}
       className={styles.addButton}
-      onMouseEnter={() => handleMouseEnter(props.id)}
-      onMouseLeave={() => handleMouseLeave(props.id)}
+      onMouseEnter={() => handleMouseEnter(props.thread.id)}
+      onMouseLeave={() => handleMouseLeave(props.thread.id)}
     >
-      {hoveredIndexes.includes(props.id) ? (
+      {hoveredState || clickState ? (
         <BookmarkFill className={styles.icon} />
       ) : (
         <Bookmark className={styles.icon} />
