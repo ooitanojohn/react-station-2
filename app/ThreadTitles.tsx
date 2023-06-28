@@ -18,7 +18,7 @@ async function getThreadInit(): Promise<Thread[]> {
   const offsets = [0, 10, 20];
   const promises = offsets.map((offset) => {
     return fetch(
-      `https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads?offset=${offset}`,
+      `${process.env.BACKENDURL}/threads?offset=${offset}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -61,7 +61,7 @@ export default function ThreadTitles(props: Props) {
       title: e.target.title.value,
     };
     const data: Thread = await fetch(
-      `https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads`,
+      `${process.env.BACKENDURL}/threads`,
       {
         method: "POST",
         headers: {

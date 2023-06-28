@@ -49,7 +49,7 @@ async function getThreadInit(threadId: string): Promise<Post[]> {
   const offsets = [0, 10, 20];
   const promises = offsets.map((offset) => {
     return fetch(
-      `https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads/${threadId}/posts?offset=${offset}`,
+      `${process.env.BACKENDURL}/threads/${threadId}/posts?offset=${offset}`,
       {
         headers: {
           "Content-Type": "application/json",
